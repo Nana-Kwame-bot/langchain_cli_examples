@@ -66,6 +66,9 @@ dart run zero_shot.dart
 ```bash
 dart run few_shot.dart
 ```
+```bash
+dart run fake_conversation.dart
+```
 
 ## Scripts Explanation
 
@@ -80,6 +83,9 @@ Performs sentiment analysis without prior examples, using a JSON-based structure
 
 ### 4. Few-Shot Sentiment Analysis
 Uses a few example inputs to guide the model in sentiment classification.
+
+### 5. Fake Conversation
+Demonstrates sentiment analysis using a few-shot learning approach with a fake conversation.
 
 ## Important Notes
 
