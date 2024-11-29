@@ -56,8 +56,14 @@ Then:
 
 ```bash
 dart run food_classification.dart
+```
+```bash
 dart run book_classification.dart
+```
+```bash
 dart run zero_shot.dart
+```
+```bash
 dart run few_shot.dart
 ```
 
