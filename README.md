@@ -50,10 +50,15 @@ $env:GOOGLEAI_API_KEY
 Each script demonstrates a different text classification technique. You can run them individually:
 
 ```bash
-dart run lib/food_classification.dart
-dart run lib/book_classification.dart
-dart run lib/zero_shot.dart
-dart run lib/few_shot.dart
+cd lib
+```
+Then:
+
+```bash
+dart run food_classification.dart
+dart run book_classification.dart
+dart run zero_shot.dart
+dart run few_shot.dart
 ```
 
 ## Scripts Explanation
