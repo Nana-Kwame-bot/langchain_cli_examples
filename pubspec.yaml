@@ -2,12 +2,21 @@ name: semantic_analysis
 description: A sample command-line application.
 version: 1.0.0
 
+publish_to: none
+
 environment:
   sdk: ^3.5.4
 
 dependencies:
   langchain: ^0.7.7+1
+  langchain_chroma: ^0.2.1+4
+  langchain_community:
+    git:
+      url: https://github.com/Nana-Kwame-bot/langchain_dart.git
+      ref: directory-loader
+      path: packages/langchain_community
   langchain_google: ^0.6.4+1
+  langchain_ollama: ^0.3.2+1
 
 dev_dependencies:
   lints: ^4.0.0
