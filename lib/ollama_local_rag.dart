@@ -37,7 +37,8 @@ void main() async {
   // Initialize chat model
   final chatModel = ChatOllama(
     defaultOptions: ChatOllamaOptions(
-      model: "gemma2",
+      // * Using llama3.2 model for testing
+      // model: "gemma2",
       temperature: 0,
       keepAlive: 30,
     ),
@@ -92,12 +93,10 @@ void main() async {
 
     try {
       print("\nThinking...\n");
-      final once = await ragChain.invoke(userInput);
-      print("once: $once");
 
       final stream = ragChain.stream(userInput);
+
       await for (final chunk in stream) {
-        print("chunk: $chunk");
         stdout.write(chunk);
       }
       print("\n");
