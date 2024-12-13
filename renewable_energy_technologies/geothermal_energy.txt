@@ -1,0 +1,38 @@
+Geothermal Energy: Harnessing Earth's Internal Heat
+
+Geothermal energy represents a powerful renewable technology that extracts heat from the Earth's core to generate electricity and provide heating solutions. This document explores geothermal energy technologies.
+
+1. Geothermal Power Generation
+Primary methods of geothermal electricity production:
+- Dry steam power plants
+- Flash steam power plants
+- Binary cycle power plants
+- Enhanced geothermal systems (EGS)
+
+2. Direct Use Applications
+Non-electrical geothermal energy applications:
+- Heating and cooling systems
+- Agricultural greenhouse heating
+- Industrial process heat
+- Spa and recreational facilities
+
+3. Emerging Geothermal Technologies
+Innovative approaches to geothermal energy:
+- Deep drilling techniques
+- Supercritical geothermal systems
+- Closed-loop geothermal technologies
+- Urban geothermal infrastructure
+
+4. Geological Considerations
+Understanding geothermal resource potential:
+- Tectonic plate boundaries
+- Volcanic regions
+- Heat flow mapping
+- Subsurface temperature analysis
+
+5. Global Geothermal Landscape
+Current state and future potential:
+- Leading countries in geothermal energy
+- Technological advancements
+- Economic feasibility
+- Environmental benefits
