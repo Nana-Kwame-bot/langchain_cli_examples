@@ -55,14 +55,18 @@ void main() async {
     (
       ChatMessageType.system,
       """
-        Answer the question based only on the following context.
-        If the context is empty, say you're unable to find an answer.
-        Provide a clear, concise answer using full sentences.
-        If the context doesn't contain the answer, say you're
-        unable to find an answer.
+        You are an expert assistant providing precise answers based
+        strictly on the given context.
+
+        Context Guidelines:
+        - Answer only from the provided context.
+        - If no direct answer exists, clearly state "I cannot find a specific
+          answer in the provided documents".
+        - Prioritize accuracy over comprehensiveness.
+        - If context is partially relevant, explain the limitation.
+        - Cite document sources if multiple documents contribute to the answer.
         
-        CONTEXT:
-        {context}
+        CONTEXT: {context}
         
         QUESTION: {question}
       """
