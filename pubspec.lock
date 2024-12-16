@@ -339,7 +339,7 @@ packages:
     description:
       path: "packages/langchain_community"
       ref: directory-loader
-      resolved-ref: "5519532e6a55229923134953e99f984e6ede389d"
+      resolved-ref: "9a19c92d33a1cfed6edc708bec59b558ddae9500"
       url: "https://github.com/Nana-Kwame-bot/langchain_dart.git"
     source: git
     version: "0.3.2+2"

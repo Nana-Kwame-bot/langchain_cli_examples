@@ -12,22 +12,22 @@ void main() async {
   final vectorStore = Chroma(
     embeddings: embeddings,
     collectionName: "renewable_energy_technologies",
+    collectionMetadata: {
+      "description": "Documents related to renewable energy technologies",
+    },
   );
 
   final loader = DirectoryLoader(
     "../renewable_energy_technologies",
     glob: "*.txt",
-    // glob: '**/*.txt',
   );
 
   final documents = await loader.load();
 
-  print("documents: ${documents.map((e) => e.pageContent)}");
-
   // Split documents
   final textSplitter = RecursiveCharacterTextSplitter(
-    chunkSize: 1500,
-    chunkOverlap: 300,
+    chunkSize: 1000,
+    chunkOverlap: 200,
   );
   final splitDocuments = textSplitter.splitDocuments(documents);
 
@@ -37,8 +37,7 @@ void main() async {
   // Initialize chat model
   final chatModel = ChatOllama(
     defaultOptions: ChatOllamaOptions(
-      // * Using llama3.2 model for testing
-      // model: "gemma2",
+      model: "gemma2",
       temperature: 0,
       keepAlive: 30,
     ),
@@ -74,12 +73,34 @@ void main() async {
     (ChatMessageType.human, "{question}"),
   ]);
 
+  // Runnable<T, RunnableOptions, T> logOutput<T extends Object>(String stepName) {
+  //   return Runnable.fromFunction<T, T>(
+  //     invoke: (input, options) {
+  //       print('Output from step "$stepName":\n$input\n---');
+  //       return Future.value(input);
+  //     },
+  //     stream: (inputStream, options) {
+  //       return inputStream.map((input) {
+  //         print('Chunk from step "$stepName":\n$input\n---');
+  //         return input;
+  //       });
+  //     },
+  //   );
+  // }
+
+  // final formattedPrompt = ragPromptTemplate.formatPrompt({
+  //   "context": retriever.pipe(
+  //     Runnable.mapInput<List<Document>, String>((docs) => docs.join('\n')),
+  //   ),
+  //   "question": "What is a solar panel?",
+  // }).toChatMessages();
+
+  // print("formattedPrompt: $formattedPrompt");
+
   final ragChain = Runnable.fromMap<String>({
     "context": retriever.pipe(
       Runnable.mapInput<List<Document>, String>((docs) => docs.join('\n')),
     ),
-    // "context": retriever.pipe(Runnable.mapInput<List<Document>, String>(
-    //     (docs) => docs.map((doc) => doc.pageContent).join('\n---\n'))),
     "question": Runnable.passthrough<String>(),
   }).pipe(ragPromptTemplate).pipe(chatModel).pipe(const StringOutputParser());
 
@@ -111,31 +132,3 @@ void main() async {
 
   print("\nThank you for using Local RAG CLI!");
 }
-
-// Utility function to load documents from a directory
-// class DirectoryLoader {
-//   final String path;
-//   final String glob;
-
-//   DirectoryLoader({required this.path, required this.glob});
-
-//   Future<List<Document>> load() async {
-//     final directory = Directory(path);
-//     final files = await directory
-//         .list(recursive: true)
-//         .where((file) =>
-//             file is File && file.path.contains(glob.replaceAll('**/', '')))
-//         .toList();
-
-//     final documents = <Document>[];
-//     for (final file in files) {
-//       final content = await (file as File).readAsString();
-//       documents.add(Document(
-//         pageContent: content,
-//         metadata: {'source': file.path},
-//       ));
-//     }
-
-//     return documents;
-//   }
-// }
