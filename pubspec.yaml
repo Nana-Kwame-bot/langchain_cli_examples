@@ -10,11 +10,7 @@ environment:
 dependencies:
   langchain: ^0.7.7+1
   langchain_chroma: ^0.2.1+4
-  langchain_community:
-    git:
-      url: https://github.com/Nana-Kwame-bot/langchain_dart.git
-      ref: directory-loader
-      path: packages/langchain_community
+  langchain_community: ^0.3.3
   langchain_google: ^0.6.4+1
   langchain_ollama: ^0.3.2+1
 
