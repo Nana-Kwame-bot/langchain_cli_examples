@@ -1,15 +1,15 @@
-import 'dart:io';
-import 'package:langchain/langchain.dart';
-import 'package:langchain_google/langchain_google.dart';
+import "dart:io";
+import "package:langchain/langchain.dart";
+import "package:langchain_google/langchain_google.dart";
 
 void main() async {
   final embeddings = GoogleGenerativeAIEmbeddings(
-    apiKey: Platform.environment['GOOGLEAI_API_KEY'],
+    apiKey: Platform.environment["GOOGLEAI_API_KEY"],
   );
 
   final documents = [
-    Document(
-      pageContent: '''
+    const Document(
+      pageContent: """
       The Hobbit by J.R.R. Tolkien
       A classic fantasy novel following the journey of Bilbo Baggins as he embarks on a quest to help dwarves reclaim their homeland from a dragon.,
 
@@ -18,11 +18,11 @@ void main() async {
 
       The Name of the Wind by Patrick Rothfuss
       The story of Kvothe, a gifted young man, and his rise from humble beginnings to a legendary figure.
-      ''',
-      metadata: {'title': 'Fantasy'},
+      """,
+      metadata: {"title": "Fantasy"},
     ),
-    Document(
-      pageContent: '''
+    const Document(
+      pageContent: """
       1984 by George Orwell
       A dystopian novel set in a totalitarian society under constant surveillance, exploring themes of control, truth, and rebellion.,
 
@@ -31,11 +31,11 @@ void main() async {
 
       Fahrenheit 451 by Ray Bradbury
       A story about a fireman in a future society where books are banned and burned to suppress dissenting ideas.
-      ''',
-      metadata: {'title': 'Dystopian'},
+      """,
+      metadata: {"title": "Dystopian"},
     ),
-    Document(
-      pageContent: '''
+    const Document(
+      pageContent: """
       Pride and Prejudice by Jane Austen
       A romantic novel about Elizabeth Bennet and her evolving relationship with the wealthy Mr. Darcy, set in 19th-century England.,
 
@@ -44,8 +44,8 @@ void main() async {
 
       Me Before You by Jojo Moyes
       A story about a young woman who becomes a caregiver for a paralyzed man, and the life-changing relationship they develop.
-      ''',
-      metadata: {'title': 'Romance'},
+      """,
+      metadata: {"title": "Romance"},
     ),
   ];
 
@@ -53,7 +53,7 @@ void main() async {
   final documentsEmbeddings = await embeddings.embedDocuments(documents);
 
   // New book description to classify
-  final newBook = '''
+  const newBook = """
     **The Fellowship of the Ring by J.R.R. Tolkien**
 
     This epic novel is the first installment of The Lord of the Rings trilogy. 
@@ -70,7 +70,7 @@ void main() async {
 
     Characters:
     * Frodo Baggins, Samwise Gamgee, Aragorn, Gandalf, and more.
-  ''';
+  """;
 
   // Generate embedding for the new book
   final newBookEmbedding = await embeddings.embedQuery(newBook);
@@ -81,7 +81,7 @@ void main() async {
           .first;
 
   // Get the category based on the most similar document
-  final category = documents[mostSimilarIndex].metadata['title'];
+  final category = documents[mostSimilarIndex].metadata["title"];
 
-  print('The new book belongs to the genre: $category'); // Outputs: Fantasy
+  print("The new book belongs to the genre: $category"); // Outputs: Fantasy
 }

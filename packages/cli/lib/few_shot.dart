@@ -12,7 +12,7 @@ void main() async {
   );
 
   final promptTemplate = PromptTemplate.fromTemplate(
-    '''
+    """
     Analyze the sentiment of the text below.
     Respond only with one word to describe the sentiment.
 
@@ -27,7 +27,7 @@ void main() async {
 
     INPUT: {text}
     OUTPUT:
-    ''',
+    """,
   );
 
   // final chain = promptTemplate | chatModel | const StringOutputParser();

@@ -1,15 +1,15 @@
-import 'dart:io';
-import 'package:langchain/langchain.dart';
-import 'package:langchain_google/langchain_google.dart';
+import "dart:io";
+import "package:langchain/langchain.dart";
+import "package:langchain_google/langchain_google.dart";
 
 void main() async {
   final embeddings = GoogleGenerativeAIEmbeddings(
-    apiKey: Platform.environment['GOOGLEAI_API_KEY'],
+    apiKey: Platform.environment["GOOGLEAI_API_KEY"],
   );
 
   final documents = [
-    Document(
-      pageContent: '''
+    const Document(
+      pageContent: """
       Bruschetta with Tomato and Basil
       Toasted baguette slices topped with a mix of diced tomatoes, fresh basil, garlic, olive oil, and a dash of balsamic vinegar.,
 
@@ -18,11 +18,11 @@ void main() async {
 
       Stuffed Mushrooms
       Button mushrooms filled with a mixture of cream cheese, garlic, breadcrumbs, and herbs, then baked to golden perfection.
-      ''',
-      metadata: {'title': 'Appetizer'},
+      """,
+      metadata: {"title": "Appetizer"},
     ),
-    Document(
-      pageContent: '''
+    const Document(
+      pageContent: """
       Grilled Lemon Herb Chicken
       Juicy chicken breasts marinated in a zesty lemon, garlic, and herb mix, grilled until perfectly charred.,
 
@@ -31,11 +31,11 @@ void main() async {
 
       Beef Lasagna
       Layers of rich meat sauce, creamy ricotta, pasta sheets, and melted mozzarella, baked until bubbly.
-      ''',
-      metadata: {'title': 'Main'},
+      """,
+      metadata: {"title": "Main"},
     ),
-    Document(
-      pageContent: '''
+    const Document(
+      pageContent: """
       Tiramisu
       A classic Italian dessert made with coffee-soaked ladyfingers layered with mascarpone cream and dusted with cocoa powder.
 
@@ -44,8 +44,8 @@ void main() async {
 
       Fruit Tart
       A buttery tart crust filled with creamy custard, topped with a vibrant arrangement of fresh fruits, glazed with apricot jam.
-      ''',
-      metadata: {'title': 'Dessert'},
+      """,
+      metadata: {"title": "Dessert"},
     ),
   ];
 
@@ -53,7 +53,7 @@ void main() async {
   final documentsEmbeddings = await embeddings.embedDocuments(documents);
 
   // New recipe to classify
-  final newRecipe = '''
+  const newRecipe = """
     **Classic Moist Chocolate Cake**
 
     This recipe delivers a rich, moist chocolate cake that's
@@ -86,7 +86,7 @@ void main() async {
       out clean.
     * Cool: Let cakes cool in pans for 10 minutes before transferring
       to a wire rack to cool completely.
-  ''';
+  """;
 
   // Generate embedding for the new recipe
   final newRecipeEmbedding = await embeddings.embedQuery(newRecipe);
@@ -97,7 +97,7 @@ void main() async {
           .first;
 
   // Get the category based on the most similar document
-  final category = documents[mostSimilarIndex].metadata['title'];
+  final category = documents[mostSimilarIndex].metadata["title"];
 
-  print('The new recipe belongs to the category: $category');
+  print("The new recipe belongs to the category: $category");
 }

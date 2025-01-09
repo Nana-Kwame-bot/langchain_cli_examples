@@ -1,6 +1,6 @@
-import 'dart:io';
-import 'package:langchain/langchain.dart';
-import 'package:langchain_google/langchain_google.dart';
+import "dart:io";
+import "package:langchain/langchain.dart";
+import "package:langchain_google/langchain_google.dart";
 
 void main() async {
   final chatModel = ChatGoogleGenerativeAI(
@@ -12,22 +12,22 @@ void main() async {
   );
 
   // Define the system message template
-  const systemTemplate = '''
+  const systemTemplate = """
   Analyze the sentiment of the text below.
   Respond only with one word to describe the sentiment.
-  ''';
+  """;
 
   // Define the few-shot examples
   final fewShotPrompts = ChatPromptTemplate.fromPromptMessages([
     SystemChatMessagePromptTemplate.fromTemplate(systemTemplate),
-    HumanChatMessagePromptTemplate.fromTemplate('I am so happy today!'),
-    AIChatMessagePromptTemplate.fromTemplate('POSITIVE'),
-    HumanChatMessagePromptTemplate.fromTemplate('The sky is blue.'),
-    AIChatMessagePromptTemplate.fromTemplate('NEUTRAL'),
+    HumanChatMessagePromptTemplate.fromTemplate("I am so happy today!"),
+    AIChatMessagePromptTemplate.fromTemplate("POSITIVE"),
+    HumanChatMessagePromptTemplate.fromTemplate("The sky is blue."),
+    AIChatMessagePromptTemplate.fromTemplate("NEUTRAL"),
     HumanChatMessagePromptTemplate.fromTemplate(
-        "I am very disappointed with the service."),
-    AIChatMessagePromptTemplate.fromTemplate('NEGATIVE'),
-    HumanChatMessagePromptTemplate.fromTemplate('I enjoy reading books.'),
+        "I am very disappointed with the service.",),
+    AIChatMessagePromptTemplate.fromTemplate("NEGATIVE"),
+    HumanChatMessagePromptTemplate.fromTemplate("I enjoy reading books."),
   ]);
 
   // final fewShotPrompts = ChatPromptTemplate.fromTemplates([

@@ -1,6 +1,6 @@
-import 'dart:io';
-import 'package:langchain/langchain.dart';
-import 'package:langchain_google/langchain_google.dart';
+import "dart:io";
+import "package:langchain/langchain.dart";
+import "package:langchain_google/langchain_google.dart";
 
 // Enum to represent sentiment
 enum Sentiment { positive, neutral, negative }
@@ -17,20 +17,20 @@ void main() async {
           "properties": {
             "sentiment": {
               "type": "string",
-              "enum": Sentiment.values.map((e) => e.name).toList()
-            }
+              "enum": Sentiment.values.map((e) => e.name).toList(),
+            },
           },
-          "required": ["sentiment"]
-        }),
+          "required": const ["sentiment"],
+        },),
   );
 
   final promptTemplate = PromptTemplate.fromTemplate(
-    '''
+    """
     Analyze the sentiment of the text below.
     Respond with a JSON object containing the sentiment.
 
     Text: {text}
-    ''',
+    """,
   );
 
   final chain = promptTemplate.pipe(chatModel).pipe(JsonOutputParser());
@@ -38,7 +38,7 @@ void main() async {
   final resultJson =
       await chain.invoke({"text": "The food here is absolutely delicious!"});
 
-  final sentiment = Sentiment.values.byName(resultJson['sentiment']);
+  final sentiment = Sentiment.values.byName(resultJson["sentiment"]);
 
   print(Sentiment.values);
 

@@ -17,7 +17,7 @@ void main() async {
     },
   );
 
-  final loader = DirectoryLoader(
+  const loader = DirectoryLoader(
     "../cli/renewable_energy_technologies",
     glob: "*.txt",
   );
@@ -25,9 +25,8 @@ void main() async {
   final documents = await loader.load();
 
   // Split documents
-  final textSplitter = RecursiveCharacterTextSplitter(
+  const textSplitter = RecursiveCharacterTextSplitter(
     chunkSize: 1000,
-    chunkOverlap: 200,
   );
   final splitDocuments = textSplitter.splitDocuments(documents);
 
@@ -36,7 +35,7 @@ void main() async {
 
   // Initialize chat model
   final chatModel = ChatOllama(
-    defaultOptions: ChatOllamaOptions(
+    defaultOptions: const ChatOllamaOptions(
       model: "gemma2",
       temperature: 0,
       keepAlive: 30,
@@ -46,11 +45,11 @@ void main() async {
   // Create retriever
   final retriever = vectorStore.asRetriever(
     defaultOptions: VectorStoreRetrieverOptions(
-        searchType: VectorStoreSearchType.similarity(k: 5)),
+        searchType: VectorStoreSearchType.similarity(k: 5),),
   );
 
   // Create RAG prompt template
-  final ragPromptTemplate = ChatPromptTemplate.fromTemplates([
+  final ragPromptTemplate = ChatPromptTemplate.fromTemplates(const [
     (
       ChatMessageType.system,
       """
@@ -99,13 +98,13 @@ void main() async {
 
   final ragChain = Runnable.fromMap<String>({
     "context": retriever.pipe(
-      Runnable.mapInput<List<Document>, String>((docs) => docs.join('\n')),
+      Runnable.mapInput<List<Document>, String>((docs) => docs.join("\n")),
     ),
     "question": Runnable.passthrough<String>(),
   }).pipe(ragPromptTemplate).pipe(chatModel).pipe(const StringOutputParser());
 
   print("Local RAG CLI Application");
-  print("Type your question (or \"quit\" to exit):");
+  print('Type your question (or "quit" to exit):');
 
   // CLI interaction loop
   while (true) {
