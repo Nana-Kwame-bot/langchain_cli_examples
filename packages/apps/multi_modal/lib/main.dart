@@ -5,6 +5,7 @@ void main() {
   runApp(const MyApp());
 }
 
+// ! split up the cli and apps into their own repos. like langchain_cli_examples
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

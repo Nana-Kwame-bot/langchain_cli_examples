@@ -23,6 +23,8 @@ class _BasicState extends State<Basic> {
     ),
   ];
 
+  static ChatUser user3 = ChatUser(id: "3", lastName: "Clark");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +32,26 @@ class _BasicState extends State<Basic> {
         title: const Text("Basic example"),
       ),
       body: DashChat(
+        messageListOptions: MessageListOptions(),
+        messageOptions: MessageOptions(
+          onTapMedia: (media) {
+            final media = ChatMedia(
+              url: "google.com",
+              fileName: "google",
+              type: MediaType.image,
+            );
+
+            setState(() {
+              messages.insert(
+                  0,
+                  ChatMessage(
+                    medias: [media],
+                    user: user,
+                    createdAt: DateTime.now(),
+                  ));
+            });
+          },
+        ),
         currentUser: user,
         onSend: (ChatMessage m) {
           setState(() {
@@ -37,6 +59,9 @@ class _BasicState extends State<Basic> {
           });
         },
         messages: messages,
+        inputOptions: const InputOptions(
+          sendOnEnter: true,
+        ),
       ),
     );
   }
