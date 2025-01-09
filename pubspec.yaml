@@ -1,8 +1,5 @@
-name: langchain_examples
-description: A sample command-line application.
-version: 1.0.0
-
-publish_to: none
+name: langchain_cli_examples
+description: CLI examples for LangChain dart
 
 environment:
   sdk: ^3.6.0
@@ -17,15 +14,3 @@ dependencies:
 dev_dependencies:
   lints: ^5.1.1
   test: ^1.24.0
-
-workspace:
-  - packages/cli
-  - packages/apps/multi_modal
-  - packages/shared
-
-dependency_overrides:
-  # Required override because:
-  # - multi_modal depends on flutter_test which needs path 1.9.0
-  # - langchain_community 0.3.3 needs path ^1.9.1
-  # Temporary solution to resolve version conflict
-  path: 1.9.1

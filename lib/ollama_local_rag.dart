@@ -2,7 +2,6 @@ import "dart:io";
 import "package:langchain/langchain.dart";
 import "package:langchain_chroma/langchain_chroma.dart";
 import "package:langchain_community/langchain_community.dart";
-import "package:langchain_google/langchain_google.dart";
 import "package:langchain_ollama/langchain_ollama.dart";
 
 void main() async {
@@ -19,7 +18,7 @@ void main() async {
   );
 
   const loader = DirectoryLoader(
-    "../renewable_energy_technologies",
+    "../cli/renewable_energy_technologies",
     glob: "*.txt",
   );
 
@@ -35,20 +34,11 @@ void main() async {
   await vectorStore.addDocuments(documents: splitDocuments);
 
   // Initialize chat model
-  // final chatModel = ChatOllama(
-  //   defaultOptions: const ChatOllamaOptions(
-  //     // model: "gemma2",
-  //     model: "llama3.2",
-  //     temperature: 0,
-  //     keepAlive: 30,
-  //   ),
-  // );
-
-  final chatModel = ChatGoogleGenerativeAI(
-    apiKey: Platform.environment["GOOGLEAI_API_KEY"],
-    defaultOptions: const ChatGoogleGenerativeAIOptions(
-      model: "gemini-1.5-pro",
+  final chatModel = ChatOllama(
+    defaultOptions: const ChatOllamaOptions(
+      model: "gemma2",
       temperature: 0,
+      keepAlive: 30,
     ),
   );
 
@@ -73,17 +63,8 @@ void main() async {
           answer in the provided documents".
         - Prioritize accuracy over comprehensiveness.
         - If context is partially relevant, explain the limitation.
-        - Cite the source you used to answer the question.
-
-        Example:
-        ""
-        One sentence [1]. Another sentence [2]. 
-
-        Sources:
-        [1] https://example.com/1
-        [2] https://example.com/2
-        ""
-
+        - Cite document sources if multiple documents contribute to the answer.
+        
         CONTEXT: {context}
         
         QUESTION: {question}

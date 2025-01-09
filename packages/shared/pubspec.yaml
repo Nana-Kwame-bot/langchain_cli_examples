@@ -1,6 +1,0 @@
-name: langchain_examples_flutter
-description: Flutter examples for LangChain
-
-environment:
-  sdk: ^3.6.0
-resolution: workspace
