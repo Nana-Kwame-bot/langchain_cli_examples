@@ -25,7 +25,8 @@ void main() async {
     HumanChatMessagePromptTemplate.fromTemplate("The sky is blue."),
     AIChatMessagePromptTemplate.fromTemplate("NEUTRAL"),
     HumanChatMessagePromptTemplate.fromTemplate(
-        "I am very disappointed with the service.",),
+      "I am very disappointed with the service.",
+    ),
     AIChatMessagePromptTemplate.fromTemplate("NEGATIVE"),
     HumanChatMessagePromptTemplate.fromTemplate("I enjoy reading books."),
   ]);
