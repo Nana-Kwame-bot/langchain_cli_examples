@@ -20,4 +20,12 @@ dev_dependencies:
 
 workspace:
   - packages/cli
+  - packages/apps/multi_modal
   - packages/shared
+
+dependency_overrides:
+  # Required override because:
+  # - multi_modal depends on flutter_test which needs path 1.9.0
+  # - langchain_community 0.3.3 needs path ^1.9.1
+  # Temporary solution to resolve version conflict
+  path: 1.9.1
