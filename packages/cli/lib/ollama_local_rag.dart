@@ -18,7 +18,7 @@ void main() async {
   );
 
   final loader = DirectoryLoader(
-    "../renewable_energy_technologies",
+    "../cli/renewable_energy_technologies",
     glob: "*.txt",
   );
 
