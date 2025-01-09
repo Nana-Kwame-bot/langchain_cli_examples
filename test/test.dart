@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 
 void main() {
-  test('test', () {
+  test('dummy test', () {
     expect(true, isTrue);
   });
 }
