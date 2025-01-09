@@ -24,26 +24,32 @@ void main() async {
     const Document(
       pageContent: """
       1984 by George Orwell
-      A dystopian novel set in a totalitarian society under constant surveillance, exploring themes of control, truth, and rebellion.,
+      A dystopian novel set in a totalitarian society under constant
+      surveillance, exploring themes of control, truth, and rebellion.,
 
       Brave New World by Aldous Huxley
-      A chilling vision of a future society where individuals are conditioned to conform, and emotions and individuality are suppressed.,
+      A chilling vision of a future society where individuals are conditioned to
+      conform, and emotions and individuality are suppressed.,
 
       Fahrenheit 451 by Ray Bradbury
-      A story about a fireman in a future society where books are banned and burned to suppress dissenting ideas.
+      A story about a fireman in a future society where books are banned and
+      burned to suppress dissenting ideas.
       """,
       metadata: {"title": "Dystopian"},
     ),
     const Document(
       pageContent: """
       Pride and Prejudice by Jane Austen
-      A romantic novel about Elizabeth Bennet and her evolving relationship with the wealthy Mr. Darcy, set in 19th-century England.,
+      A romantic novel about Elizabeth Bennet and her evolving relationship with
+      the wealthy Mr. Darcy, set in 19th-century England.,
 
       The Notebook by Nicholas Sparks
-      A tale of enduring love between Noah and Allie, spanning decades and overcoming obstacles.,
+      A tale of enduring love between Noah and Allie, spanning decades and
+      overcoming obstacles.,
 
       Me Before You by Jojo Moyes
-      A story about a young woman who becomes a caregiver for a paralyzed man, and the life-changing relationship they develop.
+      A story about a young woman who becomes a caregiver for a paralyzed man,
+      and the life-changing relationship they develop.
       """,
       metadata: {"title": "Romance"},
     ),
@@ -66,7 +72,8 @@ void main() async {
     * Sacrifice and heroism
 
     Setting:
-    * The rich, fantastical world of Middle-earth, with locations like the Shire, Rivendell, and Moria.
+    * The rich, fantastical world of Middle-earth, with locations like the Shire
+    , Rivendell, and Moria.
 
     Characters:
     * Frodo Baggins, Samwise Gamgee, Aragorn, Gandalf, and more.
