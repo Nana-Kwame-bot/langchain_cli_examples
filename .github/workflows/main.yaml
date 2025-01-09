@@ -9,6 +9,7 @@ on:
     paths:
       - ".github/workflows/main.yaml"
       - "lib/**"
+      - "test/**"      
       - "pubspec.yaml"
   push:
     branches:
@@ -16,6 +17,7 @@ on:
     paths:
       - ".github/workflows/main.yaml"
       - "lib/**"
+      - "test/**"      
       - "pubspec.yaml"
 
 jobs:
