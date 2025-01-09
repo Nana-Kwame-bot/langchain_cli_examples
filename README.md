@@ -9,6 +9,8 @@ This project demonstrates various text classification techniques using Google's 
 - `zero_shot.dart`: Performs sentiment analysis without prior examples
 - `fake_conversation.dart`: Uses few-shot learning for sentiment classification
 - `few_shot.dart`: Another few-shot sentiment analysis example
+- `ollama_local_rag`: Example using local Ollama model for RAG with sentiment
+  analysis and JSON output
 
 ## Prerequisites
 
