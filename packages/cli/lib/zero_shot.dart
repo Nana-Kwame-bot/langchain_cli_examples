@@ -9,19 +9,20 @@ void main() async {
   final chatModel = ChatGoogleGenerativeAI(
     apiKey: Platform.environment["GOOGLEAI_API_KEY"],
     defaultOptions: ChatGoogleGenerativeAIOptions(
-        responseMimeType: "application/json",
-        model: "gemini-1.5-flash",
-        temperature: 0,
-        responseSchema: {
-          "type": "object",
-          "properties": {
-            "sentiment": {
-              "type": "string",
-              "enum": Sentiment.values.map((e) => e.name).toList(),
-            },
+      responseMimeType: "application/json",
+      model: "gemini-1.5-flash",
+      temperature: 0,
+      responseSchema: {
+        "type": "object",
+        "properties": {
+          "sentiment": {
+            "type": "string",
+            "enum": Sentiment.values.map((e) => e.name).toList(),
           },
-          "required": const ["sentiment"],
-        },),
+        },
+        "required": const ["sentiment"],
+      },
+    ),
   );
 
   final promptTemplate = PromptTemplate.fromTemplate(

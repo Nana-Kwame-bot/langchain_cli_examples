@@ -45,7 +45,8 @@ void main() async {
   // Create retriever
   final retriever = vectorStore.asRetriever(
     defaultOptions: VectorStoreRetrieverOptions(
-        searchType: VectorStoreSearchType.similarity(k: 5),),
+      searchType: VectorStoreSearchType.similarity(k: 5),
+    ),
   );
 
   // Create RAG prompt template
