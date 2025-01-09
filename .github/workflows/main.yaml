@@ -9,7 +9,6 @@ on:
     paths:
       - ".github/workflows/main.yaml"
       - "lib/**"
-      - "test/**"
       - "pubspec.yaml"
   push:
     branches:
@@ -17,7 +16,6 @@ on:
     paths:
       - ".github/workflows/main.yaml"
       - "lib/**"
-      - "test/**"
       - "pubspec.yaml"
 
 jobs:
@@ -27,5 +25,6 @@ jobs:
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
     with:
-      min_coverage: 0    
+      min_coverage: 0
       analyze_directories: "lib"
+      coverage_excludes: "**/*" 
