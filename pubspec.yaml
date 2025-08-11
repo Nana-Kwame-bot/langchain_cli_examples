@@ -5,7 +5,7 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
-  langchain: ^0.7.8
+  langchain: ^0.7.9
   langchain_chroma: ^0.2.1+4
   langchain_community: ^0.3.3
   langchain_google: ^0.6.4+1
